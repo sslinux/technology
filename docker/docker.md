@@ -82,3 +82,45 @@ Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需�
 
 ### 仓库(Repository)
 
+一个集中的存储、分发镜像的服务，Docker Registry.
+
+一个 Docker Registry 中可以包含多个仓库（Repository）；每个仓库可以包含多个标签（Tag）；每个标签对应一个镜像。
+
+一个仓库会包含同一个软件不同版本的镜像，而标签就常用于对应该软件的各个版本。
+
+仓库名经常以 两段式路径 形式出现，比如 jwilder/nginx-proxy，前者往往意味着 Docker Registry 多用户环境下的用户名，后者则往往是对应的软件名。但这并非绝对，取决于所使用的具体 Docker Registry 的软件或服务。
+
+
+#### Docker Registry 公开服务
+
+Docker Registry 公开服务是开放给用户使用、允许用户管理镜像的 Registry 服务。一般这类公开服务允许用户免费上传、下载公开的镜像，并可能提供收费服务供用户管理私有镜像。
+
+Registry公开服务是官方的 Docker Hub，这也是默认的 Registry，并拥有大量的高质量的官方镜像。
+
+还有 CoreOS 的 Quay.io，CoreOS 相关的镜像存储在这里；
+Google 的 Google Container Registry，Kubernetes 的镜像使用的就是这个服务。
+
+国内服务商提供Docker Hub的镜像服务(Registry Mirror),称为加速器；
+阿里云加速器、DaoCloud加速器；
+
+国内服务商提供的Docker Hub公开服务：
+
+时速云镜像仓库；
+网易云镜像服务；
+DaoCloud镜像市场；
+阿里云镜像库；
+
+#### 私有Docker Registry
+
+可以本地搭建Docker Registry。
+
+Docker官方提供了Docker Registry镜像，可以直接使用作为私有Registry服务。。
+
+开源的 Docker Registry 镜像只提供了 Docker Registry API 的服务端实现，足以支持 docker 命令，不影响使用。但不包含图形界面，以及镜像维护、用户管理、访问控制等高级功能。
+
+在官方的商业化版本 Docker Trusted Registry 中，提供了这些高级功能。
+
+第三方软件：（实现了Docker Registry API），提供用户界面以及一些高级功能；
+* VMWare Harbor
+* Sonatype Nexus
+
